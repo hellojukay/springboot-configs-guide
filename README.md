@@ -39,7 +39,7 @@ resouces 目录下的 application.properties ，还有一些其他的配置也�
 * properties
 
 如果 `properties` 格式文件不喜欢，没有关系，可以只将这个文件转化成 `yml` 格式的配置文件。
-### 多文件
+### profiles
 推荐的做法是，在 application.yml 中写入默认配置，通过其他的配置文件覆盖里面的配置，关于环境有关的信息，我们写在其他的文件中，比如数据库的帐号密码，其他服务的配置信息。这里我们就需要用到多个配置文件组合来配置了
 
 ```
@@ -82,5 +82,12 @@ export SPRING_PROFILES_ACTIVE=local
 java -jar app.jar
 ```
 
+如果 `application-{env}.yml` 被激活，那么`application-{env}.yml` 中的配置将覆盖掉 `application.yml` 中的配置
 
-
+## 配置引用
+在定义一个公共配置以后，在其他的配置项中，还可以引用这个配置
+```
+demo:
+  msg: hello ${name}
+name: Bob
+```
