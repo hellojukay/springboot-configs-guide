@@ -60,7 +60,24 @@ java -jar aap.jar --spring.config.location=classpath:application.yml,app.yml
     │       ├── application.yml
 ```
 类似的 `application-{env}.yml` 的形式，
-这里的 {env} 就是环境，如果我们想要激活 application-local.yml 的配置，我们有三种方式,优先级从高到低
+这里的 {env} 就是环境，
+
+因为 `yaml` 文件的特性，我们也可以将多个 `profile`写在一个 yml 文件中，只需要用 `---` 分开即可，比如
+```
+spring:
+  profile: local
+demo:
+  mame: aaa
+
+---
+
+spring:
+  profile: prod
+demo:
+  name: bbb
+```
+
+如果我们想要激活 如果我们想要激活某一个 `profile` 的配置，我们有三种方式,优先级从高到低
 
 方法1: 
 
