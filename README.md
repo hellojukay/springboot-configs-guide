@@ -32,7 +32,11 @@ resouces 目录下的 application.properties ，还有一些其他的配置也�
 ```
 备注： 这里的 PWD 是程序的工作空间
 ```
-
+需要接介绍的是，我们可以同时指定多个文件当成配置文件，如果有冲突，后面的配置文件会覆盖前面的配置，例如：
+```
+java -jar aap.jar --spring.config.location=classpath:application.yml,app.yml
+```
+这里  `app.yml` 中的配置在冲突情况下会覆盖 `classhpath:application.yml` 中的配置.
 ### 文件格式
 目前 springboot 支持2种格式的配置文件
 * yml
