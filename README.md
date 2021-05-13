@@ -56,7 +56,7 @@ resouces 目录下的 application.properties ，还有一些其他的配置也�
     │       ├── application.yml
 ```
 类似的 `application-{env}.yml` 的形式，
-这里的 {env} 就是环境，如果我们想要激活 application-local.yml 的配置，我们有三种方式
+这里的 {env} 就是环境，如果我们想要激活 application-local.yml 的配置，我们有三种方式,优先级从高到低
 
 方法1: 
 
@@ -65,17 +65,21 @@ resouces 目录下的 application.properties ，还有一些其他的配置也�
 java -jar --spring.profiles.active=local
 ```
 
-方法2:
-
-通过`SPRING_PROFILES_ACTIVE` 环境变量来控制
-
-方法1：
+方法3：
 
 在 application.yml 中配置 spring.profiles.active
 ```
 spring:
     profiles:
         active: local
+```
+
+方法3:
+
+通过`SPRING_PROFILES_ACTIVE` 环境变量来控制，如下
+```
+export SPRING_PROFILES_ACTIVE=local
+java -jar app.jar
 ```
 
 
