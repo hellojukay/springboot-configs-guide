@@ -1,5 +1,5 @@
 # springboot-configs-guide
-一篇文章说清楚 springboot 的配置文件是咋回事
+总结一下 springboot 配置文件的用法
 
 ## 创建项目
 创建一个标准的 springboot 项目，可以从这个页面生成模板项目
@@ -24,10 +24,12 @@ https://start.spring.io/
 ```
 resouces 目录下的 application.properties ，还有一些其他的配置也会自动读取(优先级从高到低)
 
-0. resources 目录下的 bootstrap.yml(我们一般用这个配置来覆盖 spring 的一些默认行为)
-1. 通过命令行指定的 --spring.config.location=xxx.yml
-2. ${PWD}/config/application.yml 也会自动读取
-3. ${PWD}} 下面的 application.yml 
+1. resources 目录下的 bootstrap.yml(我们一般用这个配置来覆盖 spring 的一些默认行为)
+2. 通过命令行指定 --spring.config.additional-location,
+3. 通过命令行指定的 --spring.config.location=xxx.yml
+3. ${PWD}/config/application.yml 也会自动读取
+5. classpath 下面的 config/application.yml
+6. ${PWD}} 下面的 application.yml 
 
 ```
 备注： 这里的 PWD 是程序的工作空间
@@ -113,7 +115,11 @@ demo:
 name: Bob
 ```
 
-## 命令行配置
+## 取值方式
+springboot 有三种取值方式，优先级从高到低
+
+1. 命令行参数
+
 在 springboot 项目及中用到的配置，我们都可以通过命令行的方式指定，不管是 springboot 的一些内置配置项目，还是我们自己定义的配置，比如：
 ```yaml
 demo:
@@ -127,3 +133,19 @@ demo:
 ```
 java -jar app.jar --demo.name=Nick
 ```
+
+2. 配置文件
+
+写在 yml 或者 properties 文件中的值都能被读取
+
+3. 环境变量
+
+xxx.yyy.zzz 这样的配置，我们可以通过设置环境变量 XXX_YYY_ZZZ 这样的方式来注入值
+
+
+## 默认值
+我们在通过  Value 注解配置一些默认，如下：
+```
+@Value("${demo.name：Bob}")
+```
+在没有配置`demo.name` 或者环境变量，以及命令行参数的时候，就会使用默认值 `Bob`
