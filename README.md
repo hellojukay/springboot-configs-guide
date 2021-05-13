@@ -91,3 +91,18 @@ demo:
   msg: hello ${name}
 name: Bob
 ```
+
+## 命令行配置
+在 springboot 项目及中用到的配置，我们都可以通过命令行的方式指定，不管是 springboot 的一些内置配置项目，还是我们自己定义的配置，比如：
+```yaml
+demo:
+    name: Bod
+```
+我们定义了 `demo.name`,并且在代理里面引用了这个配置
+```
+  @Value("${demo.name}")
+```
+我们也可以通过命令行设置 `demo.name` 的值，它将覆盖掉 `application.yml`的配置
+```
+java -jar app.jar --demo.name=Nick
+```
