@@ -36,7 +36,7 @@ resouces 目录下的 application.properties ，还有一些其他的配置也�
 ```
 需要接介绍的是，我们可以同时指定多个文件当成配置文件，如果有冲突，后面的配置文件会覆盖前面的配置，例如：
 ```
-java -jar aap.jar --spring.config.location=classpath:application.yml,app.yml
+java -jar aap.jar --spring.config.location=classpath:application.yml,file:app.yml
 ```
 这里  `app.yml` 中的配置在冲突情况下会覆盖 `classhpath:application.yml` 中的配置.
 ### 文件格式
