@@ -88,7 +88,7 @@ demo:
 java -jar --spring.profiles.active=local
 ```
 
-方法3：
+方法2：
 
 在 application.yml 中配置 spring.profiles.active
 ```
