@@ -1,8 +1,8 @@
 # springboot-configs-guide
-总结一下 springboot 配置文件的用法
+总结一下 SpringBoot 配置文件的用法
 
 ## 创建项目
-创建一个标准的 springboot 项目，可以从这个页面生成模板项目
+创建一个标准的 SpringBoot 项目，可以从这个页面生成模板项目
 ```
 https://start.spring.io/
 ```
@@ -120,7 +120,7 @@ springboot 有三种取值方式，优先级从高到低
 
 1. 命令行参数
 
-在 springboot 项目及中用到的配置，我们都可以通过命令行的方式指定，不管是 springboot 的一些内置配置项目，还是我们自己定义的配置，比如：
+在 SpringBoot 项目及中用到的配置，我们都可以通过命令行的方式指定，不管是 SpringBoot 的一些内置配置项目，还是我们自己定义的配置，比如：
 ```yaml
 demo:
     name: Bod
